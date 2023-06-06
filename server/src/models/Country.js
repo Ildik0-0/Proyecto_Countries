@@ -7,7 +7,8 @@ module.exports = (sequelize) => {
     id:{
       type: DataTypes.STRING(3),
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
+      
     },
     name: {
       type: DataTypes.STRING,
@@ -17,7 +18,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    continent:{
+    continents:{
       type: DataTypes.STRING,
       allowNull: false,
     },

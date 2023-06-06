@@ -16,10 +16,7 @@ module.exports = (sequelize) => {
     difficulty: {
         type: DataTypes.ENUM("1", "2", "3", "4", "5"),
         allowNull: false,
-        validate: {
-            min: 1,
-            max: 5,
-        }
+        
     },
     duration: {
         type: DataTypes.INTEGER,
@@ -27,17 +24,10 @@ module.exports = (sequelize) => {
        
     },
     season: {
-        type: DataTypes.ARRAY(DataTypes.ENUM('Summer','Autumn','Winter','Spring')),
+        type: DataTypes.ENUM('Summer','Autumn','Winter','Spring'),
         allowNull: false,
     },
-    country:{
-        type: DataTypes.ARRAY(DataTypes.STRING),
-        allowNull: true,
-    },
-    img: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      }
+    
     }, {
         timestamps: false,
         freezeTableName: true,

@@ -13,20 +13,52 @@ const getApiInfo = async (req, res) => {
     const {data} = await axios.get('http://localhost:5000/countries')
     let countriesArray = [];
 
-        data.forEach(element => {
+    
+        data.forEach( async (element) => {
             const country = {
                 id: element.cca3,
                 name: element.name.common,
                 imgFlag : element.flags.png,
-                continent : element.continents[0],
+                continents : element.continents[0],
                 capital : element.capital ? element.capital[0] : "No data",
                 subregion : element.subregion,
                 area : element.area,
                 population: element.population,   
             }
-            countriesArray.push(country)
+
+            // Country.findOrCreate({
+            //     where:{
+            //         id: element.cca3,
+            //         name: element.name.common,
+            //         imgFlag : element.flags.png,
+            //         continents : element.continents[0],
+            //         capital : element.capital ? element.capital[0] : "No data",
+            //         subregion : element.subregion ? element.subregion : "No data",
+            //         area : element.area,
+            //         population: element.population,
+            //     }
+            // })
+            const [newCountry, created] = await Country.findOrCreate({
+                where: {
+                  id: element.cca3,
+                },
+                defaults: {
+                  name: element.name.common,
+                  imgFlag: element.flags.png,
+                  continents: element.continents[0],
+                  capital: element.capital ? element.capital[0] : "No data",
+                  subregion: element.subregion ? element.subregion : "No data",
+                  area: element.area,
+                  population: element.population,
+                },
+              });
+             
+              if (created) {
+                countriesArray.push(newCountry);
+              }
+            //countriesArray.push(country)
         })
-        Country.bulkCreate(countriesArray)
+        //Country.bulkCreate(countriesArray)
         return res.status(200).json(countriesArray)
 
 
