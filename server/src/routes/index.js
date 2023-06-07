@@ -1,7 +1,7 @@
 const { Router } = require('express');
 
 
-const getApiInfo = require('../controllers/controller');
+const {getApiInfo} = require('../controllers/controller');
 const getCountryId = require('../controllers/getCountryId');
 const getCountryName = require('../controllers/getCountryName');
 const postActivity = require('../controllers/postActivity');

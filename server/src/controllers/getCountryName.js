@@ -5,8 +5,6 @@ const {Op} =require('sequelize')
 const getCountryName = async (req,res) => {
     const {name} = req.query
 
-   
-
     try {
         // const {data} = await axios.get('http://localhost:5000/countries')
         // const apiCountry = data.filter(element => element.name.toLoweCase().includes(name.toLoweCase()))
