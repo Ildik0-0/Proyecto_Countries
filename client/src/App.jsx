@@ -5,10 +5,11 @@
 //useLocation, useNavigate
 //import { useState, useEffect } from 'react';
 //import Home from './components/home/Home.js'
-import Home from './components/homeCountry/Home.jsx'
-import LandingPage from './components/landing/LandingPage.jsx'
+import Home from './components/homeCountry/Home'
+import LandingPage from './components/landing/LandingPage'
 
 import { Routes, Route } from 'react-router-dom';
+
 function App() {
   
 
