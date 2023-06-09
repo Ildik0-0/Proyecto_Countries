@@ -41,7 +41,7 @@ const getApiInfo = async (req, res) => {
     })
 
     )
-    console.log(countriesArray);
+    // console.log(countriesArray);
     
     return res.status(200).json(countriesArray)
 

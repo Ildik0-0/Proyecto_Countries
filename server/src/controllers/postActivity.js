@@ -13,16 +13,15 @@ const postActivity = async (req, res) => {
        
         console.log(name, season, difficulty, duration, countries);
 
-        let arrayA = []
-
+      
          const [postactivity, isCreate] = await Activity.findOrCreate({where:{name,season, difficulty, duration}})
-            console.log(name, season, difficulty, duration, countries);
+            console.log(name, season, difficulty, duration, countries, + '3');
 
             if(isCreate){
                 await postactivity.addCountries(countries)//aqui insert en la tabla realcional 
                 res.status(201).send('Esta Creado')
             }else{
-               res.status(409).send('Ya existe')
+                res.status(409).send('Ya existe')
             }
            
             
