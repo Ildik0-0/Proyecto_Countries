@@ -1,0 +1,8 @@
+.conteiner{
+    border: 3px solid white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between
+    
+   
+}

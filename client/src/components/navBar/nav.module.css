@@ -1,0 +1,16 @@
+.nav{
+    display: flex;
+    justify-content: center;
+    border-radius: 1rem;
+    height: 3rem;
+    /* box-shadow: 0 0 .2rem rgba(81, 255, 110, 0.461), 0 0 .2rem rgba(81, 255, 110, 0.461), 0 0 2rem rgba(81, 255, 110, 0.461); */
+    background-color: #0000009b;
+}
+
+.btn{
+    display: flex;
+    margin-right: 5rem;
+    align-items: center;
+    border: white;
+    gap: 3rem;
+}

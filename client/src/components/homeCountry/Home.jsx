@@ -2,12 +2,14 @@
 // import {useDispatch, useSelector} from "react-redux"
 // import { getAllCountries } from "../../redux/action";
 //import CardPais from "../cardsCountry/CardsPais";
+//import { useSelector } from "react-redux"
+import {NavLink} from 'react-router-dom'
 
-const Home = ()  =>{
+ export const Home = ()  =>{
 //get all countries 
 // const dispatch = useDispatch();
 // const countries = useSelector(state => state.allCountries)
-
+//const c = useSelector(state => state.country)
 // useEffect(() => {
 //     console.log(countries)
 // }, [countries])
@@ -21,10 +23,12 @@ const Home = ()  =>{
     return (
         <>
 
-            <h1>HOLA!!!</h1>
-           <button>ALLCOUNTRIES</button>
+            <button>
+                <NavLink to='/home'> HOME </NavLink>
+            </button>
+           
         </>
     )
 }
 
-export default Home;
+// export default Home;
