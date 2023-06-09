@@ -1,4 +1,7 @@
-import {createSlice} from '@reduxjs/toolkit'
+import { createSlice} from '@reduxjs/toolkit'
+
+
+
 
 const initialState = {
     allCountries: [],
@@ -31,35 +34,37 @@ export const getReducer = createSlice({
             : allfilterContinent
                
         },
-        // orderPopulation : (state, action) =>{
-        //     const data = action.payload;
-        //     const sortedCountries = [...state.countries]; // Crear una copia del array de países
-        //     sortedCountries.sort((a, b) => {
-        //       if (data  === 'A') {
-        //         return a.population - b.population;
-        //       } else if (data  === 'D') {
-        //         return b.population - a.population;
-        //       } else {
-        //         return 0;
-        //       }
-        //     });
-          
-        //     return {
-        //       ...state,
-        //       countries: sortedCountries,
-        //     };
-        // }
+        orderPopulation : (state, action) =>{
+            const data = action.payload;
+            state.allCountries = [...state.allCountries]
+              .sort((a, b) => b.population - a.population);
+            if (data === 'desc') {
+              state.allCountries.reverse();
+            }
+          },
         orderAsenDen: (state, action) =>{
             const data = action.payload;
-            const allCountriesCopy = [...state.countries]
+            const allCountriesCopy = [...state.allCountries]
             state.allCountries = data ==='A'
             ? allCountriesCopy.sort((a, b) => a.name.localeCompare(b.name))
             : allCountriesCopy.sort((a, b) => b.name.localeCompare(a.name))
             console.log(state.allCountries)
         },
+
         
-    }
+        getCountryName: (state, action) => {
+            const data = action.payload;
+            state.countries = data;
+            state.allCountries = data;
+            // // state.allCountries.filter(country =>
+            //   country.name.toLowerCase().includes(data.toLowerCase())
+            //   );
+          }
+        
+    },
 });
 
-export const {addCountries, getCountryId, filterContinent, orderPopulation, orderAsenDen} = getReducer.actions;
+export const {  addCountries, getCountryId, 
+                filterContinent, orderPopulation,
+                orderAsenDen, extraReducers, getCountryName} = getReducer.actions;
 export default getReducer.reducer;

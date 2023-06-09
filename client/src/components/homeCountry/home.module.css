@@ -1,0 +1,18 @@
+.contenedor{
+     position: fixed;
+     width: 100vw;
+     height: 100vh;
+     left: 0;
+     top: 0;
+     background-image: url(map.png);
+     background-size: cover;
+     background-position: center;
+    
+}
+
+.btnHome{
+     border: 2px solid white;
+     width: 20ch;
+     height: 10ch;
+     position: fixed;
+}

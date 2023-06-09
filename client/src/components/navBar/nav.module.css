@@ -1,16 +1,27 @@
 .nav{
-    display: flex;
-    justify-content: center;
-    border-radius: 1rem;
-    height: 3rem;
-    /* box-shadow: 0 0 .2rem rgba(81, 255, 110, 0.461), 0 0 .2rem rgba(81, 255, 110, 0.461), 0 0 2rem rgba(81, 255, 110, 0.461); */
-    background-color: #0000009b;
+    position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #5bb0d7;
+  padding: 10px;
+  z-index: 999;
 }
 
-.btn{
-    display: flex;
-    margin-right: 5rem;
-    align-items: center;
-    border: white;
-    gap: 3rem;
+.menu{
+  
+  list-style: none;
+  display: flex;
+  font-size: 20px;
+  font-weight: bold;
 }
+.btn{
+  margin-right: 10px;
+  cursor: pointer;
+}
+.btn:hover {
+    color: #f1a488;
+  }
