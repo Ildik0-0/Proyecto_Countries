@@ -5,8 +5,9 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  padding: 6px;
   align-items: center;
-  background-color: #5bb0d7;
+  background: linear-gradient(#37364d, #000000);
   padding: 10px;
   z-index: 999;
 }
@@ -17,6 +18,7 @@
   display: flex;
   font-size: 20px;
   font-weight: bold;
+  justify-content: space-between;
 }
 .btn{
   margin-right: 10px;

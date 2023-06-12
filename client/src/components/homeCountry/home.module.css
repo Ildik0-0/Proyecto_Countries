@@ -11,8 +11,30 @@
 }
 
 .btnHome{
-     border: 2px solid white;
-     width: 20ch;
-     height: 10ch;
+     width:200px;
+     height:70px;
+    width:200px;
+    height:70px;
+    background: linear-gradient(to left top, #39f6f6 50%, #373db3 50%);
+    border-style: none;
+    color:#ffffff;
+    font-size: 23px;
+    letter-spacing: 3px;
+    font-family: 'Lato';
+    font-weight: 600;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    padding: 0px;
+    overflow: hidden;
+    transition: all .5s;
+    box-shadow: 0px 1px 2px rgb(255, 255, 255);
      position: fixed;
+     left: 900px;
+     top: 300px
+
+}
+.btnHome:hover{
+     background-image: url(uni.png);
+     
 }

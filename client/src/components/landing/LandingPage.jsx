@@ -114,6 +114,9 @@ import { useState } from 'react';
 import { filterContinent } from '../../redux/reducer';
 import { orderAsenDen } from '../../redux/reducer';
 import {orderPopulation} from '../../redux/reducer';
+import { getActivity } from '../../redux/reducer';
+import { activityFilter } from '../../redux/reducer';
+
 import axios from 'axios';
 
 import style from '../landing/landingPage.module.css';
@@ -121,10 +124,15 @@ import CardCountry from '../cardCountry/CardCountry';
 
 export const LandingPage = () => {
   const URL = 'http://localhost:3001/countries';
+  const Url = 'http://localhost:3001/activities'
   const dispatch = useDispatch();
   const countries = useSelector((state) => state.country.allCountries);
-  
+  const getFilterActivity = useSelector((state) => state.country.activities)
+
+
+  const [activities, setActivities] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+
   const countriesPerPage = 10;
 
   useEffect(() => {
@@ -132,12 +140,21 @@ export const LandingPage = () => {
       try {
         const { data } = await axios(URL);
         dispatch(addCountries(data));
+
+        const response = await axios.get(Url);
+        // setActivities(response.data);
+        dispatch(getActivity(response.data))
+
       } catch (error) {
         throw error.message;
       }
     };
     getAll();
   }, []);
+
+  
+
+  
 
   const handleFilterChange = (event) => {
     dispatch(filterContinent(event.target.value));
@@ -149,21 +166,26 @@ export const LandingPage = () => {
   const handleOrderPopulation = (event) => {
     dispatch(orderPopulation(event.target.value));
   };
+  const handleActivity = (event) => {
+    dispatch(activityFilter(event.target.value));
+    console.log('Activity name:', event.target.value);
+  };
 
+  // me aseguro que no se repitan las actividades 
+  const uniqueActivities = [...new Set(getFilterActivity.map((activity) => activity.name))];
   // Paginación
   const indexOfLastCountry = currentPage * countriesPerPage;
   const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
   const pageCountries = countries.slice(indexOfFirstCountry, indexOfLastCountry);
-    console.log(countries);
   const totalPages = Math.ceil(countries.length / countriesPerPage);
-    console.log(pageCountries);
+
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
   return (
     <>
-      <div>
+      <div className={style.selectList}>
         <br />
         <h1>Lista De País</h1>
 
@@ -189,9 +211,19 @@ export const LandingPage = () => {
           <option value="desc">Menor Poblacion</option>
           
         </select>
-        {/* <div className={style.container}> */}
+
+        <select name="name" onChange={handleActivity}>
+          <option value="No Activity">No Activity</option>
+          {uniqueActivities.map((activityName) => (
+            <option key={activityName} value={activityName}>
+              {activityName}
+            </option>
+          ))}
+        </select> 
+
+        <div className={style.pagination}>
           {Array.from({ length: totalPages }, (_, index) => index + 1).map((page) => (
-            <button
+            <button className={style.btn}
               key={page}
               onClick={() => paginate(page)}
               disabled={currentPage === page}
@@ -199,7 +231,7 @@ export const LandingPage = () => {
               {page}
             </button>
           ))}
-            {/* </div> */}
+            </div>
       </div>
       
       <div className={style.container}>
@@ -222,3 +254,15 @@ export const LandingPage = () => {
   );
 };
 
+// useEffect(() => {
+  //   const fetchActivities = async () => {
+  //     try {
+  //       const response = await axios.get(Url);
+  //       setActivities(response.data);
+  //     } catch (error) {
+  //       console.error('activities not found:', error);
+  //     }
+  //   };
+
+  //   fetchActivities();
+  // }, []);

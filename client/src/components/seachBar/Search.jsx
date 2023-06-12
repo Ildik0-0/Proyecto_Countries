@@ -34,9 +34,9 @@ export const Search = () =>{
     setSearchTerm(event.target.value);
   };
 
-  const handleSearch = () => {
-    dispatch(getCountryName(searchTerm));
-  };
+  // const handleSearch = () => {
+  //   dispatch(getCountryName(searchTerm));
+  // };
 
   return (
     <div>
@@ -47,9 +47,9 @@ export const Search = () =>{
           type='search'
           placeholder='Buscar por nombre'
         />
-        <button onClick={handleSearch}>
+        {/* <button onClick={handleSearch}>
           Buscar
-        </button>
+        </button> */}
        </div>
      </div>
    );

@@ -3,13 +3,15 @@ import axios from "axios";
 import { useDispatch, useSelector } from 'react-redux';
 import { addCountries} from '../../redux/reducer'
 import { validation } from "../validationForm/validation";
+import { useNavigate } from "react-router-dom";
+
 import style from '../formCountry/from.module.css'
 
 export const Formactivity = () => {
   const URL = 'http://localhost:3001/countries';
   //const URL2 = 'http://localhost:3001/activities';
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const activity = useSelector(state => state.country.countries);
 
   useEffect(() => {
@@ -30,13 +32,13 @@ export const Formactivity = () => {
     season: "",
     difficulty: "",
     duration: "",
-    countries: "",
+    countries: [],
   });
 
   const handleChange = (event) => {
     setUserData({
       ...userData,
-      [event.target.name]: event.target.value,
+      [event.target.name]:event.target.name === 'countries' ? userData.countries.includes(event.target.value) ? [...userData.countries] : [...userData.countries, event.target.value] : event.target.value
     });
   };
 
@@ -46,20 +48,9 @@ export const Formactivity = () => {
     event.preventDefault();
 
     const formErrors = validation(userData);
-    // setErrors(formErrors);
-
-    // if (Object.keys(formErrors).length === 0) {
-    //   console.log("Datos enviados:", userData);
-    //   //dispatch(saveFormData(userData));
-    //   console.log(userData);
-    // } else {
-    //   console.log("Formulario contiene errores");
-    // }
-  
-  
-    event.preventDefault();
    
 
+ 
     
     setErrors(formErrors);
 
@@ -69,24 +60,26 @@ export const Formactivity = () => {
         alert("Datos guardados exitosamente");
         setUserData({
           name: "",
-          season: "summer",
+          season: "",
           difficulty: "",
           duration: "",
-          country: "",
+          country: [],
         });
         document.forms["formTag"].reset();
+        navigate('/home')
       } catch (error) {
         alert("Error al guardar los datos en el servidor");
-        console.error(error);
+        
+        
       }
     } else {
       alert("Formulario contiene errores");
     }
   };
     return(
-        <div>
+      <div>
             
-            <div className={style.formBox}>
+          <div className={style.formBox}>
             <form name="formTag" onSubmit={handleSubmit}>
                 <div className={style.form}>
                     <label>Actividad: </label>
@@ -106,7 +99,7 @@ export const Formactivity = () => {
                         <option value='Spring'>Spring</option>
                         
                     </select>
-                    
+                    {errors.season && <p className="error">{errors.season}</p>}
                 </div>
                 <br />
                 <div className={style.form}>
@@ -136,6 +129,7 @@ export const Formactivity = () => {
                     <label>Pais: </label>
                         <br />
                         <select name="countries" onChange={handleChange}>
+                        <option value="">Chose Country</option>
                             {Array.isArray(activity) && activity.length > 0 ? (
                                 activity.map(({ id, name }) => (
                                 <option key={id} value={id}>
@@ -146,12 +140,17 @@ export const Formactivity = () => {
                                 <option value="">No hay actividades disponibles</option>
                             )}
                         </select>
+                        {userData.countries.map( country => (
+                          <span  key={country}>
+                          {country} 
+                          </span>
+                        ))}
                 </div>
                 <br />
                 <button type="submit ">Submit</button>
             </form>
-            </div>
-        </div>
+          </div>
+      </div>
     )
 }
 

@@ -7,6 +7,7 @@ const initialState = {
     allCountries: [],
     countries: [],
     country: {},
+    activity: {},
     activities: [],
 }
 
@@ -59,12 +60,35 @@ export const getReducer = createSlice({
             // // state.allCountries.filter(country =>
             //   country.name.toLowerCase().includes(data.toLowerCase())
             //   );
-          }
+          },
+          // postActivity:(state, action) =>{
+          //   const data = action.payload;
+          //   state.activities = data
+          // },
+          
+          getActivity: (state, action) => {
+            const data = action.payload;
+            state.activities = data
+        } ,
+
+        activityFilter: (state, action) =>{
+          const data = action.payload
+            const activitiesCopy = state.activities.filter(activity => activity.name ===data)
+            let countriesID = []
+            activitiesCopy.map(activity=> activity.Countries.map(country=> countriesID.push(country.id)))
+            const countriesFilteredByActivity = state.countries.filter(country=> countriesID.includes(country.id))
+            state.allCountries = data === 'No Activity'
+            ? state.countries
+            : countriesFilteredByActivity
+        }
+          
+          
+          
         
     },
 });
 
 export const {  addCountries, getCountryId, 
                 filterContinent, orderPopulation,
-                orderAsenDen, extraReducers, getCountryName} = getReducer.actions;
+                orderAsenDen, extraReducers, getCountryName, postActivity, getActivity, activityFilter} = getReducer.actions;
 export default getReducer.reducer;
