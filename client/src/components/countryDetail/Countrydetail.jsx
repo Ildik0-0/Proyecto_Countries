@@ -34,20 +34,25 @@ export const Countrydetail = () =>{
 
 // className={style.detailConteiner}
     return(
-        <div>
+        <div className={style.imageBack}>
             <div className={style.detailConteiner}>
                 {/* <button>
                     <Link to='/home'>Home Pais</Link>
                 </button> */}
-               
-                <h1>{country?.name}</h1>
-                <h2>Continente: {country?.continents}</h2>
-                <h2>Capital: {country?.capital}</h2>
-                <h2>Subregion: {country?.subregion}</h2>
-                <h2>Area: {country?.area} Km2</h2>
-                <h2>Poblacion: {country?.population} </h2>
-                <img src={country?.imgFlag} />
-                
+                <div className={style.item}>
+                  <div className={style.polaroid}>
+                  <img src={country?.imgFlag} />
+                      <div className={style.caption}>
+                        <h1>{country?.name} {country?.id}</h1>
+                        <h2>Continente: {country?.continents}</h2>
+                        <h2>Capital: {country?.capital}</h2>
+                        <h2>Subregion: {country?.subregion}</h2>
+                        <h2>Area: {country?.area} Km2</h2>
+                        <h2>Poblacion: {country?.population} </h2>
+                        
+                      </div>
+                    </div>
+                  </div>
             </div>
         </div>
     )

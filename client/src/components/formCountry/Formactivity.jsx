@@ -12,14 +12,14 @@ export const Formactivity = () => {
   //const URL2 = 'http://localhost:3001/activities';
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const activity = useSelector(state => state.country.countries);
+  const countriesActivityForm = useSelector(state => state.country.countries);
 
   useEffect(() => {
     const getAll = async () => {
       try {
         const { data } = await axios(URL);
         dispatch(addCountries(data));
-        console.log(activity);
+        console.log(countriesActivityForm);
       } catch (error) {
         throw error.message;
       }
@@ -68,17 +68,19 @@ export const Formactivity = () => {
         document.forms["formTag"].reset();
         navigate('/home')
       } catch (error) {
-        alert("Error al guardar los datos en el servidor");
+        alert("Error the data can not be saved");
         
         
       }
     } else {
-      alert("Formulario contiene errores");
+      alert("Form have errors ");
     }
   };
     return(
       <div>
             
+            
+
           <div className={style.formBox}>
             <form name="formTag" onSubmit={handleSubmit}>
                 <div className={style.form}>
@@ -91,7 +93,7 @@ export const Formactivity = () => {
                 <div className={style.form}>
                     <label>Temporada: </label>
                     <br />
-                    <select name='season' onChange={handleChange} value={userData.season}>
+                    <select name='season' className={style.custom} onChange={handleChange} value={userData.season}>
                         <option >Select Season</option>
                         <option value='Summer'>Summer</option>
                         <option value='Winter'>Winter</option>
@@ -113,7 +115,7 @@ export const Formactivity = () => {
                      <label>Dificultad: </label>
                     <br />
                    {/* <input type="text" name='difficulty' placeholder="Ingrese La dificultad" onChange={handleChange}/> */}
-                    <select name='difficulty' onChange={handleChange} value={userData.difficulty}>
+                    <select name='difficulty' className={style.custom} onChange={handleChange} value={userData.difficulty}>
                         <option >Select difficulty</option>
                         <option value='1'>Very Easy</option>
                         <option value='2'>Easy</option>
@@ -128,28 +130,40 @@ export const Formactivity = () => {
                 <div className={style.form}>
                     <label>Pais: </label>
                         <br />
-                        <select name="countries" onChange={handleChange}>
-                        <option value="">Chose Country</option>
-                            {Array.isArray(activity) && activity.length > 0 ? (
-                                activity.map(({ id, name }) => (
+                        <select name="countries" className={style.custom} onChange={handleChange}>
+                        <option >Chose Country</option>
+                        {/* aqui esoty mapeando los paices para mostrarlos en el select y guardarlos con el form */}
+                            {Array.isArray(countriesActivityForm) && countriesActivityForm.length > 0 ? (
+                                countriesActivityForm.map(({ id, name }) => (
                                 <option key={id} value={id}>
-                                    {name}
+                                    {name}  
+                                    {/* aqui muestro el nombre de los paices */}
                                 </option>
                                 ))
                             ) : (
-                                <option value="">No hay actividades disponibles</option>
+                               errors.countries && <p className="error">{errors.countries}</p>
                             )}
+                            
                         </select>
-                        {userData.countries.map( country => (
-                          <span  key={country}>
-                          {country} 
-                          </span>
-                        ))}
+                        
+                        {/* {
+                          userData.countries.map( country => (
+                            <span  key={country}>
+                            {country} 
+                            </span>
+                            
+                          )) 
+                        } */}
+                        
                 </div>
                 <br />
-                <button type="submit ">Submit</button>
+                <button className={style.btn} type="submit ">Submit</button>
             </form>
           </div>
+
+
+                          
+
       </div>
     )
 }

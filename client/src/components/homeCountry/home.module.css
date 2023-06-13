@@ -1,40 +1,111 @@
-.contenedor{
-     position: fixed;
-     width: 100vw;
-     height: 100vh;
-     left: 0;
-     top: 0;
-     background-image: url(map.png);
-     background-size: cover;
-     background-position: center;
+
+.homeConteiner{
+  
+  background-image: url(./img/world-map.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat:no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1 ;
+  
+ 
+}
+
+
+.container{
+  
+    width: 100%;
+    border: 2px solid #d7da4a;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between
     
+   
 }
-
-.btnHome{
-     width:200px;
-     height:70px;
-    width:200px;
-    height:70px;
-    background: linear-gradient(to left top, #39f6f6 50%, #373db3 50%);
-    border-style: none;
-    color:#ffffff;
-    font-size: 23px;
-    letter-spacing: 3px;
-    font-family: 'Lato';
-    font-weight: 600;
-    outline: none;
-    cursor: pointer;
+.selectList{
+    border: 3px solid #222831;
+    position: center;
     position: relative;
-    padding: 0px;
-    overflow: hidden;
-    transition: all .5s;
-    box-shadow: 0px 1px 2px rgb(255, 255, 255);
-     position: fixed;
-     left: 900px;
-     top: 300px
+    text-align: center;
+    padding-left: 3px;
+}
+.pagination{
+    position: relative;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0;
+    z-index: 6;
+    margin: 50px 0;
+    justify-content: space-between;
 
 }
-.btnHome:hover{
-     background-image: url(uni.png);
-     
-}
+
+.btn {
+    font-size: 0.9rem;
+    padding: 1rem 1rem;
+    border: none;
+    outline: none;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    background-color: rgb(14, 14, 26);
+    color: rgb(234, 234, 234);
+    font-weight: 700;
+    transition: 0.6s;
+    box-shadow: 0px 0px 60px #dfb85b;
+    -webkit-box-reflect: below 10px linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.4));
+  }
+  
+  .btn:active {
+    scale: 0.92;
+  }
+  
+  .btn:hover {
+    background: rgb(2,29,78);
+    background: linear-gradient(270deg, rgba(2, 29, 78, 0.681) 0%, rgba(31, 215, 232, 0.873) 60%);
+    color: rgb(4, 4, 38);
+  }
+
+  .custom {
+    position: relative;
+    display: inline-block;
+    max-width: 100px;
+    min-width: 180px;
+    margin:  10px;
+    top: 30px;
+    border: 1px solid #dfb85b;
+    background-color: #232127;
+    z-index: 10;
+  }
+
+  select {
+    border: none;
+    outline: none;
+    background: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    margin: 0;
+    
+    width: 100%;
+    padding: 12px 55px 15px 15px;
+    font-size: 14px;
+    color: #3782c4;
+  }
+  
+  .custom:after {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 100%;
+    line-height: 38px;
+    content: '\2228';
+    text-align: center;
+    color: #dfb85b;
+    font-size: 24px;
+    border-left: 1px solid #ffffff;
+    z-index: -1;
+  }

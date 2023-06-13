@@ -31,12 +31,14 @@ export const Search = () =>{
   
 
   const handleChange = (event) => {
+    const regex = /^[a-zA-Z\s]*$/; //  permite solo letras y espacios
+  
+    if (regex.test(event.target.value)) {
     setSearchTerm(event.target.value);
-  };
 
-  // const handleSearch = () => {
-  //   dispatch(getCountryName(searchTerm));
-  // };
+  }
+}
+
 
   return (
     <div>
