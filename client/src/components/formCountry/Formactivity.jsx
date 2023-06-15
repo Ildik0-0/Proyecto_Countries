@@ -41,7 +41,13 @@ export const Formactivity = () => {
       [event.target.name]:event.target.name === 'countries' ? userData.countries.includes(event.target.value) ? [...userData.countries] : [...userData.countries, event.target.value] : event.target.value
     });
   };
-
+  const handleClick = (event, id) => {
+    event.preventDefault()
+    setUserData({
+        ...userData,
+        countries: userData.countries.filter((country) => country !== id)
+    })
+}
   const [errors, setErrors] = useState({});
 
   const handleSubmit = async (event) => {
@@ -77,9 +83,9 @@ export const Formactivity = () => {
     }
   };
     return(
-      <div>
+      <div className={style.containerForm}>
             
-            
+            <h1>Create your Activity</h1>
 
           <div className={style.formBox}>
             <form name="formTag" onSubmit={handleSubmit}>
@@ -130,6 +136,7 @@ export const Formactivity = () => {
                 <div className={style.form}>
                     <label>Pais: </label>
                         <br />
+
                         <select name="countries" className={style.custom} onChange={handleChange}>
                         <option >Chose Country</option>
                         {/* aqui esoty mapeando los paices para mostrarlos en el select y guardarlos con el form */}
@@ -145,15 +152,21 @@ export const Formactivity = () => {
                             )}
                             
                         </select>
-                        
-                        {/* {
+                        <div className={style.spanTag}>
+                          {userData.countries.length ? <span>Countries Select:</span> : null}
+                          </div>
+                        <div className={style.btnCountries}>
+                        {
                           userData.countries.map( country => (
-                            <span  key={country}>
+                            <button  key={country} onClick={(event) => handleClick(event, country)}>
                             {country} 
-                            </span>
+                            </button>
                             
-                          )) 
-                        } */}
+                            )) 
+                          }
+                          </div>
+                        
+              
                         
                 </div>
                 <br />

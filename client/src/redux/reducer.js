@@ -43,6 +43,8 @@ export const getReducer = createSlice({
               state.allCountries.reverse();
             }
           },
+
+
         orderAsenDen: (state, action) =>{
             const data = action.payload;
             const allCountriesCopy = [...state.allCountries]

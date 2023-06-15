@@ -6,22 +6,24 @@ import {Formactivity} from './components/formCountry/Formactivity'
 import { Countrydetail } from './components/countryDetail/Countrydetail';
 import { Routes, Route } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-//import './app.css'
+
 
 function App() {
  
 const location = useLocation()
   return (
-    <div >
+    <div  id='app'>
       {
          location.pathname !== '/' &&  <Navbar/>
       }
+     
       <Routes>
       
         <Route path= '/home' element={<Home/>} />
         <Route path= '/' element={<LandingPage/>}/>
         <Route path= '/details/:id' element={<Countrydetail/>} />
         <Route path= '/activity' element={<Formactivity/>}/>
+        
       </Routes>
       {/* <Home/>
       <LandingPage/> */}

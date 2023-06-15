@@ -5,9 +5,7 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 //import { useSelector } from 'react-redux';
 import axios from 'axios'
-//import { getCountryName } from '../../redux/reducer';
-//import { useSelector } from 'react-redux';
-
+import style from '../seachBar/search.module.css';
 
 export const Search = () =>{
 
@@ -41,17 +39,18 @@ export const Search = () =>{
 
 
   return (
-    <div>
-      <div>
-        <input
+    <div className={style.search}>
+      <div className={style.searchId}>
+        <input 
+        className={style.searchInput}
           onChange={handleChange}
           value={searchTerm}
           type='search'
           placeholder='Buscar por nombre'
         />
-        {/* <button onClick={handleSearch}>
-          Buscar
-        </button> */}
+        <button className="searchButton" href="#">
+            ✈
+        </button>
        </div>
      </div>
    );

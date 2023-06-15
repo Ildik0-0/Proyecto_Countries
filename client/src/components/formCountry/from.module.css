@@ -1,14 +1,26 @@
-html {
-    height: 100%;
+
+  html{
+    height: 100vh;
+    background-image: url(./img/camara.jpg); 
+    /* background-color: #ff0000; */
+     background-size: cover;
+    background-position: center;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1 ;
+    
+  
+    
   }
-  /* body {
+   body {
     margin:0;
     padding:0;
-    font-family: sans-serif;
+    /* font-family: sans-serif;
     background: linear-gradient(to left top, #000000,#00f2ff);
     
-    height: 100%;
-  } */
+    height: 100%; */
+  } 
   
   .formBox {
     position: absolute;
@@ -29,6 +41,8 @@ html {
   
   .formBox .form {
     position: relative;
+    flex: wrap;
+    justify-content: center;
   }
   
   
@@ -131,7 +145,33 @@ html {
     transition: box-shadow 0.2s ease-in;
   }
   
- 
+  .spanTag{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    justify-content: space-between;
+  }
+
+  .btnCountries{
+    margin: 5px;
+    position: relative;
+    flex: wrap;
+   
+    padding: 10px 20px;
+    border-radius: 7px;
+    border: 1px solid rgb(61, 106, 255);
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    background: transparent;
+    color: #fff;
+    overflow: hidden;
+    box-shadow: 0 0 0 0 transparent;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+  }
 
   
   
