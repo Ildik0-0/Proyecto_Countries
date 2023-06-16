@@ -1,0 +1,49 @@
+/* normalize.css */
+
+/* Establecer un box-sizing coherente en todos los elementos */
+* {
+  box-sizing: border-box;
+}
+
+/* Resetear los márgenes y rellenos */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+}
+
+/* Establecer una fuente base */
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Establecer un tamaño de fuente base */
+body {
+  font-size: 16px;
+}
+
+/* Establecer una altura de línea coherente */
+body {
+  line-height: 1.5;
+}
+
+/* Establecer un color de texto predeterminado */
+body {
+  color: #333;
+}
+
+/* Otros estilos de normalización... */

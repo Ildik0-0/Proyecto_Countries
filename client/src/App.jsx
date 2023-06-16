@@ -6,13 +6,13 @@ import {Formactivity} from './components/formCountry/Formactivity'
 import { Countrydetail } from './components/countryDetail/Countrydetail';
 import { Routes, Route } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-
+import style from './App.module.css'
 
 function App() {
  
 const location = useLocation()
   return (
-    <div  id='app'>
+    <div  className={style.app}>
       {
          location.pathname !== '/' &&  <Navbar/>
       }

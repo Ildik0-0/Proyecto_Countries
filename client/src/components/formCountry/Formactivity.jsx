@@ -36,6 +36,9 @@ export const Formactivity = () => {
   });
 
   const handleChange = (event) => {
+    if (event.target.name === "countries" && event.target.value === "Chose Country") {
+      return; 
+    }
     setUserData({
       ...userData,
       [event.target.name]:event.target.name === 'countries' ? userData.countries.includes(event.target.value) ? [...userData.countries] : [...userData.countries, event.target.value] : event.target.value
@@ -63,7 +66,7 @@ export const Formactivity = () => {
     if (Object.keys(formErrors).length === 0) {
       try {
         await axios.post("http://localhost:3001/activities", userData);
-        alert("Datos guardados exitosamente");
+        alert("Data have been successfully sent");
         setUserData({
           name: "",
           season: "",
@@ -85,19 +88,20 @@ export const Formactivity = () => {
     return(
       <div className={style.containerForm}>
             
-            <h1>Create your Activity</h1>
+           
 
           <div className={style.formBox}>
+             
             <form name="formTag" onSubmit={handleSubmit}>
                 <div className={style.form}>
                     <label>Actividad: </label>
                     <br />
-                    <input type="text" name='name' placeholder="Ingrese Actividad" onChange={handleChange}/>
-                    {errors.name && <p className="error">{errors.name}</p>}
+                    <input type="text" name='name' placeholder="  Enter Activity" onChange={handleChange}/>
+                    {errors.name && <p className={style.error}>{errors.name}</p>}
                 </div>
                 <br />
                 <div className={style.form}>
-                    <label>Temporada: </label>
+                    <label>Season: </label>
                     <br />
                     <select name='season' className={style.custom} onChange={handleChange} value={userData.season}>
                         <option >Select Season</option>
@@ -107,18 +111,18 @@ export const Formactivity = () => {
                         <option value='Spring'>Spring</option>
                         
                     </select>
-                    {errors.season && <p className="error">{errors.season}</p>}
+                    {errors.season && <p className={style.error}>{errors.season}</p>}
                 </div>
                 <br />
                 <div className={style.form}>
-                    <label>Duracion: </label>
+                    <label>Duration  (Hours): </label>
                     <br />
-                    <input type="number" name='duration' placeholder="Ingrese Las Horas" onChange={handleChange}/>
-                    {errors.duration && <p className="error">{errors.duration}</p>}
+                    <input type="text" name='duration' placeholder="  Enter Hours" onChange={handleChange}/>
+                    {errors.duration && <p className={style.error}>{errors.duration}</p>}
                 </div>
                 <br />
                 <div className={style.form}>
-                     <label>Dificultad: </label>
+                     <label>Difficulty: </label>
                     <br />
                    {/* <input type="text" name='difficulty' placeholder="Ingrese La dificultad" onChange={handleChange}/> */}
                     <select name='difficulty' className={style.custom} onChange={handleChange} value={userData.difficulty}>
@@ -130,14 +134,14 @@ export const Formactivity = () => {
                         <option value='5'>Very Hard</option>
                         
                     </select>
-                    {errors.difficulty && <p className="error">{errors.difficulty}</p>}
+                    {errors.difficulty && <p className={style.error}>{errors.difficulty}</p>}
                 </div>
                 <br />
                 <div className={style.form}>
-                    <label>Pais: </label>
+                    <label>Country: </label>
                         <br />
 
-                        <select name="countries" className={style.custom} onChange={handleChange}>
+                        <select name="countries" className={style.custom} value={userData.countries} onChange={handleChange}>
                         <option >Chose Country</option>
                         {/* aqui esoty mapeando los paices para mostrarlos en el select y guardarlos con el form */}
                             {Array.isArray(countriesActivityForm) && countriesActivityForm.length > 0 ? (
@@ -148,13 +152,16 @@ export const Formactivity = () => {
                                 </option>
                                 ))
                             ) : (
-                               errors.countries && <p className="error">{errors.countries}</p>
+                               errors.countries && <p className={style.error}>{errors.countries}</p>
                             )}
-                            
+                           
                         </select>
+                        {errors.countries && <p className={style.error}>{errors.countries}</p>}
+
                         <div className={style.spanTag}>
                           {userData.countries.length ? <span>Countries Select:</span> : null}
                           </div>
+
                         <div className={style.btnCountries}>
                         {
                           userData.countries.map( country => (
@@ -164,6 +171,7 @@ export const Formactivity = () => {
                             
                             )) 
                           }
+                          
                           </div>
                         
               

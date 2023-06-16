@@ -1,51 +1,51 @@
 
 .homeConteiner{
-  height: 100%;
-  /* width: 100vw; */
-  /* position: fixed; */
+ 
   background-image: url(./img/world-map.jpg);
   background-size: cover;
   background-position: center;
   background-repeat:no-repeat;
-  background-position: center center;
-  background-size: cover;
+  
+ 
   opacity: 1 ;
-  overflow: auto;
+  background-attachment: fixed;
  
 }
 
 
 .container{
   
-    width: 100%;
-    border: 2px solid #050505;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between
-    
-   
+  height: 68vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 120px;
 }
+
 .selectList{
-    border: 3px solid #222831;
+    
     position: center;
     position: relative;
     text-align: center;
     padding-left: 3px;
 }
+
 .pagination{
     position: relative;
     text-align: center;
-    padding: 20px 0;
+    margin-top: 3.5vh;
     font-size: 0;
-    z-index: 6;
-    margin: 50px 0;
+    
+    /* z-index: 6; */
+    /* margin: 50px 0; */
     justify-content: space-between;
 
 }
-
+ 
 .btn {
     font-size: 0.9rem;
-    padding: 1rem 1rem;
+    padding: 2rem 2rem;
+    
     padding: 10px;
     margin: 5px;
     border: none;

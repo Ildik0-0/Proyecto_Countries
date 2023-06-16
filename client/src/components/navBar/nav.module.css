@@ -29,6 +29,7 @@
 .btn:hover {
     color: #f1a488;
   } */
+ 
   .btn {
     position: relative;
     margin-right: 30px;
@@ -48,6 +49,7 @@
     -webkit-transition: all 0.2s ease-in;
     -moz-transition: all 0.2s ease-in;
     transition: all 0.2s ease-in;
+    text-decoration: none;
   }
   
   .btn:hover {

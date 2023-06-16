@@ -1,5 +1,4 @@
 
-
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { addCountries } from '../../redux/reducer';
@@ -182,15 +181,3 @@ export const Home = () => {
 };
 
 
-// useEffect(() => {
-  //   const fetchActivities = async () => {
-  //     try {
-  //       const response = await axios.get(Url);
-  //       setActivities(response.data);
-  //     } catch (error) {
-  //       console.error('activities not found:', error);
-  //     }
-  //   };
-
-  //   fetchActivities();
-  // }, []);
