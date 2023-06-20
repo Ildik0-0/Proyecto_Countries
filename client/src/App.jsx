@@ -8,6 +8,7 @@ import { Routes, Route } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import style from './App.module.css'
 
+
 function App() {
  
 const location = useLocation()
@@ -16,6 +17,7 @@ const location = useLocation()
       {
          location.pathname !== '/' &&  <Navbar/>
       }
+     
      
       <Routes>
       

@@ -6,7 +6,7 @@ import { useSelector } from "react-redux"
 import { getCountryId } from "../../redux/reducer"
 import { useParams } from "react-router-dom"
 import style from '../countryDetail/details.module.css'
-import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom"
 import axios from "axios"
 
 export const Countrydetail = () =>{
@@ -14,8 +14,8 @@ export const Countrydetail = () =>{
   const URL = 'http://localhost:3001/countries';
   const  {id}  = useParams();
   const dispatch = useDispatch();
-    console.log(id);
   const country = useSelector(state => state.country.country);
+  
   useEffect(() => {
     const getCountryById = async () => {
       try {
@@ -30,15 +30,16 @@ export const Countrydetail = () =>{
     getCountryById();
   }, []);
 
+if(!country) return(
+  <h1 className={style.error}>The ID: {id} does not exist, please enter a valid ID</h1>
+ 
+)
 
 
 // className={style.detailConteiner}
     return(
         <div className={style.imageBack}>
             <div className={style.detailConteiner}>
-                {/* <button>
-                    <Link to='/home'>Home Pais</Link>
-                </button> */}
                 <div className={style.item}>
                   <div className={style.polaroid}>
                   <img src={country?.imgFlag} />
@@ -49,7 +50,6 @@ export const Countrydetail = () =>{
                         <h2>Subregion: {country?.subregion}</h2>
                         <h2>Area: {country?.area} Km2</h2>
                         <h2>Poblacion: {country?.population} </h2>
-                        
                       </div>
                     </div>
                   </div>

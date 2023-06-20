@@ -10,6 +10,12 @@
     display: flex;
   
 }
+.error{
+    color: rgb(255, 0, 0);
+    font-size: small;
+   
+  
+  }
 .searchId:hover > .searchInput {
     width: 240px;
     padding: 0 6px;

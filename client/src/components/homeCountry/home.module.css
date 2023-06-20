@@ -1,13 +1,14 @@
 
 .homeConteiner{
  
+  position: relative;
   background-image: url(./img/world-map.jpg);
   background-size: cover;
   background-position: center;
   background-repeat:no-repeat;
   
  
-  opacity: 1 ;
+ 
   background-attachment: fixed;
  
 }

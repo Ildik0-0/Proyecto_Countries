@@ -1,37 +1,30 @@
 
-  html{
+.containerForm{
     height: 100vh;
     background-image: url(./img/camara.jpg); 
-    /* background-color: #ff0000; */
+  
     background-size: cover;
     background-position: center;
-    background-repeat:no-repeat;
-    background-position: center center;
-    background-size: cover;
-    opacity: 1 ;
-    /* overflow: scroll; */
+    background-repeat:repeat;
     background-attachment: fixed;
+    opacity: 1 ;
+    
     
   
     
   }
   .error{
     color: rgb(237, 92, 92);
+    font-size: small;
   }
-   /* body {
-    margin:0;
-    padding:0;
-    /* font-family: sans-serif;
-    background: linear-gradient(to left top, #000000,#00f2ff);
-    
-    height: 100%; 
-  }  */
+
   
   .formBox {
     position: absolute;
-    display: flex;
+    display: wrap;
     justify-content: center;
-    top: 50%;
+    top: 500px;
+   
     left: 50%;
     width: 400px;
     padding: 40px;
@@ -49,7 +42,7 @@
     position: relative;
     flex: wrap;
     justify-content: center;
-   
+    overflow: hidden;
     
   }
   

@@ -59,36 +59,36 @@ export const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const countriesPerPage = 10;
-  const maxDisplayedPages = 5;
+  const maxPagesToDisplay  = 5;
 
   const uniqueActivities = [...new Set(getFilterActivity.map((activity) => activity.name))];
   const indexOfLastCountry = currentPage * countriesPerPage;
   const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
   const pageCountries = countries.slice(indexOfFirstCountry, indexOfLastCountry);
-  const totalPages = Math.ceil(countries.length / countriesPerPage);
+  const NumberOfTotalPages = Math.ceil(countries.length / countriesPerPage);
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
-  const renderPageNumbers = () => {
-    const middlePage = Math.floor(maxDisplayedPages / 2);
+  const changePageNumbers = () => {
+    const setMiddlePage = Math.floor(maxPagesToDisplay / 2);
     const pageNumbers = [];
     let startPage;
     let endPage;
 
-    if (totalPages <= maxDisplayedPages) {
+    if (NumberOfTotalPages <= maxPagesToDisplay ) {
       startPage = 1;
-      endPage = totalPages;
-    } else if (currentPage <= middlePage) {
+      endPage = NumberOfTotalPages;
+    } else if (currentPage <= setMiddlePage) {
       startPage = 1;
-      endPage = maxDisplayedPages;
-    } else if (currentPage + middlePage >= totalPages) {
-      startPage = totalPages - maxDisplayedPages + 1;
-      endPage = totalPages;
+      endPage = maxPagesToDisplay ;
+    } else if (currentPage + setMiddlePage >= NumberOfTotalPages) {
+      startPage = NumberOfTotalPages - maxPagesToDisplay  + 1;
+      endPage = NumberOfTotalPages;
     } else {
-      startPage = currentPage - middlePage;
-      endPage = currentPage + middlePage;
+      startPage = currentPage - setMiddlePage;
+      endPage = currentPage + setMiddlePage;
     }
 
     for (let page = startPage; page <= endPage; page++) {
@@ -155,9 +155,9 @@ export const Home = () => {
             </button>
           )}
 
-          {renderPageNumbers()}
+          {changePageNumbers()}
 
-          {currentPage < totalPages && (
+          {currentPage < NumberOfTotalPages && (
             <button className={style.btn} onClick={() => paginate(currentPage + 1)}>
               ➡
             </button>

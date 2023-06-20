@@ -29,6 +29,3 @@ const CardCountry = ({id, imgFlag, continents, name}) => {
 }
 
 export default CardCountry
-// CardCountry.propTypes = {
-//     id: PropTypes.string.isRequired,
-//   }
