@@ -6,8 +6,7 @@ const getCountryName = async (req,res) => {
     const {name} = req.query
 
     try {
-        // const {data} = await axios.get('http://localhost:5000/countries')
-        // const apiCountry = data.filter(element => element.name.toLoweCase().includes(name.toLoweCase()))
+       
         const searchCountry = await Country.findAll({where: {name:{[Op.iLike]:`%${name}%`}}})
 
         if(!searchCountry.length){
