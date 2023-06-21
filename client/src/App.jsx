@@ -9,6 +9,7 @@ import { useLocation } from 'react-router-dom';
 import style from './App.module.css'
 
 
+
 function App() {
  
 const location = useLocation()
@@ -25,6 +26,7 @@ const location = useLocation()
         <Route path= '/' element={<LandingPage/>}/>
         <Route path= '/details/:id' element={<Countrydetail/>} />
         <Route path= '/activity' element={<Formactivity/>}/>
+        
         
       </Routes>
       {/* <Home/>

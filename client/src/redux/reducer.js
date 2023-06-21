@@ -1,8 +1,6 @@
 import { createSlice} from '@reduxjs/toolkit'
 
 
-
-
 const initialState = {
     allCountries: [],
     countries: [],
@@ -21,6 +19,8 @@ export const getReducer = createSlice({
             state.allCountries= data;
             
         },
+        
+
         getCountryId: (state, action) =>{
             const data = action.payload;
             state.country = data;
@@ -29,20 +29,23 @@ export const getReducer = createSlice({
         filterContinent: (state, action) =>{
            const data = action.payload;
            const allfilterContinent = state.countries.filter(country => country.continents === data)
-           console.log(allfilterContinent);
+          
            state.allCountries = data === 'All'
             ? state.countries
             : allfilterContinent
                
         },
-        orderPopulation : (state, action) =>{
-            const data = action.payload;
-            state.allCountries = [...state.allCountries]
-              .sort((a, b) => b.population - a.population);
-            if (data === 'desc') {
-              state.allCountries.reverse();
-            }
-          },
+        orderPopulation: (state, action) => {
+          const data = action.payload;
+          const copyCountry = [...state.allCountries];
+          if (data === 'desc') {
+            state.allCountries = copyCountry.sort((a, b) => a.population - b.population);
+          } else if (data === 'asc') {
+            state.allCountries = copyCountry.sort((a, b) => b.population - a.population);
+          } else{
+            state.allCountries = state.countries
+          }
+        },
 
 
         orderAsenDen: (state, action) =>{
@@ -51,7 +54,7 @@ export const getReducer = createSlice({
             state.allCountries = data ==='A'
             ? allCountriesCopy.sort((a, b) => a.name.localeCompare(b.name))
             : allCountriesCopy.sort((a, b) => b.name.localeCompare(a.name))
-            console.log(state.allCountries)
+            
         },
 
         
@@ -59,17 +62,14 @@ export const getReducer = createSlice({
             const data = action.payload;
             state.countries = data;
             state.allCountries = data;
-            // // state.allCountries.filter(country =>
-            //   country.name.toLowerCase().includes(data.toLowerCase())
-            //   );
+            
           },
-          // postActivity:(state, action) =>{
-          //   const data = action.payload;
-          //   state.activities = data
-          // },
+          
+         
           
           getActivity: (state, action) => {
             const data = action.payload;
+            state.activity = data;
             state.activities = data
         } ,
 

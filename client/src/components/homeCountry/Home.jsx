@@ -21,8 +21,8 @@ export const Home = () => {
   const dispatch = useDispatch();
   const countries = useSelector((state) => state.country.allCountries);
   const getFilterActivity = useSelector((state) => state.country.activities);
-
-  // const [activities, setActivities] = useState([]);
+  const uniqueActivities = [...new Set(getFilterActivity.map((activity) => activity.name))];
+  
   
   useEffect(() => {
     const getAll = async () => {
@@ -53,7 +53,7 @@ export const Home = () => {
 
   const handleActivity = (event) => {
     dispatch(activityFilter(event.target.value));
-    console.log('Activity name:', event.target.value);
+    
   };
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -61,7 +61,6 @@ export const Home = () => {
   const countriesPerPage = 10;
   const maxPagesToDisplay  = 5;
 
-  const uniqueActivities = [...new Set(getFilterActivity.map((activity) => activity.name))];
   const indexOfLastCountry = currentPage * countriesPerPage;
   const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
   const pageCountries = countries.slice(indexOfFirstCountry, indexOfLastCountry);
@@ -74,23 +73,14 @@ export const Home = () => {
   const changePageNumbers = () => {
     const setMiddlePage = Math.floor(maxPagesToDisplay / 2);
     const pageNumbers = [];
-    let startPage;
-    let endPage;
-
-    if (NumberOfTotalPages <= maxPagesToDisplay ) {
-      startPage = 1;
-      endPage = NumberOfTotalPages;
-    } else if (currentPage <= setMiddlePage) {
-      startPage = 1;
-      endPage = maxPagesToDisplay ;
-    } else if (currentPage + setMiddlePage >= NumberOfTotalPages) {
-      startPage = NumberOfTotalPages - maxPagesToDisplay  + 1;
-      endPage = NumberOfTotalPages;
-    } else {
-      startPage = currentPage - setMiddlePage;
-      endPage = currentPage + setMiddlePage;
+  
+    let startPage = Math.max(1, currentPage - setMiddlePage);
+    let endPage = Math.min(startPage + maxPagesToDisplay - 1, NumberOfTotalPages);
+  
+    if (endPage - startPage < maxPagesToDisplay - 1) {
+      startPage = Math.max(1, endPage - maxPagesToDisplay + 1);
     }
-
+  
     for (let page = startPage; page <= endPage; page++) {
       pageNumbers.push(
         <button
@@ -102,7 +92,7 @@ export const Home = () => {
         </button>
       );
     }
-
+  
     return pageNumbers;
   };
 
@@ -131,7 +121,7 @@ export const Home = () => {
           </div>
           <div className={style.custom}>
             <select name="continents" onChange={handleOrderPopulation}>
-              <option value="All">All</option>
+              <option value="all">All</option>
               <option value="asc">Mayor Poblacion</option>
               <option value="desc">Menor Poblacion</option>
             </select>

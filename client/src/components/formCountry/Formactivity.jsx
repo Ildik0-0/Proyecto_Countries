@@ -19,7 +19,6 @@ export const Formactivity = () => {
       try {
         const { data } = await axios(URL);
         dispatch(addCountries(data));
-        console.log(countriesActivityForm);
       } catch (error) {
         throw error.message;
       }

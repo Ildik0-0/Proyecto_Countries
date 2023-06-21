@@ -1,7 +1,7 @@
  export const validation = (userData) => {
     const errors = {};
   
-    // Validar campo "Actividad"
+   
     if (!userData.name) {
       errors.name = 'It cannot be empty, please enter an activity name';
     } else if (!/^[a-zA-Z\s]+$/.test(userData.name)) {
@@ -9,8 +9,7 @@
     } else if (!/^[a-zA-Z\s]{3,30}$/.test(userData.name)) {
       errors.name = 'It can only contain letters and must be between 3 and 30 characters';
     }
-  
-    // Validar campo "Temporada"
+    
     if (!userData.season) {
       errors.season = 'It cannot be empty, please enter a season you wish to save';
     }
@@ -26,18 +25,17 @@
       errors.duration = 'The duration cannot exceed 180 hours';
     }
   
-    // Validar campo "Dificultad"
+   
     if (!userData.difficulty) {
       errors.difficulty = 'It cannot be empty, please enter the difficulty of the activity';
     }
   
-    // Validar campo "Pais"
+   
     if (!userData.countries || userData.countries.length === 0) {
       errors.countries = 'It cannot be empty, please enter the country or the countries you wish to have your activity';
     }
 
-   
-  
+
     return errors;
   };
  

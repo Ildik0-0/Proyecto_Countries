@@ -8,10 +8,7 @@
     background-repeat:repeat;
     background-attachment: fixed;
     opacity: 1 ;
-    
-    
   
-    
   }
   .error{
     color: rgb(237, 92, 92);
@@ -62,7 +59,6 @@
   .formBox .form label {
     position: absolute;
     top:-15px;
-    /* bottom: 800px; */
     right: 50px;
     left: 0px;
     padding: 10px 0;
@@ -138,21 +134,6 @@
     transform: skewX(-20deg);
   }
   
-  @keyframes sh02 {
-    from {
-      opacity: 0;
-      left: 0%;
-    }
-  
-    50% {
-      opacity: 1;
-    }
-  
-    to {
-      opacity: 0;
-      left: 100%;
-    }
-  }
   .btn:active {
     box-shadow: 0 0 0 0 transparent;
     -webkit-transition: box-shadow 0.2s ease-in;
@@ -198,9 +179,4 @@
  
   
  
-  /* .label{
-    margin: 2px;
-  }
-  .input{
-    top: 60px;
-  } */
+  

@@ -2,7 +2,7 @@ import { legacy_createStore as createStore, applyMiddleware, compose } from "red
 import thunkMiddleware from 'redux-thunk';
 import reducer from './reducer';
 
-console.log('entro mijo store');
+
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
