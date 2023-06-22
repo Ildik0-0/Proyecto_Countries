@@ -15,7 +15,7 @@ const getActivity = async (req,res) => {
     if(activity){
         res.status(200).json(activity)
     }else{
-        res.status(404).json('No se encuentra actividad mijo')
+        res.status(404).json('No se encuentra actividad')
     }
 
 
@@ -25,6 +25,7 @@ const getActivity = async (req,res) => {
     
 
 }
+
 
 
 

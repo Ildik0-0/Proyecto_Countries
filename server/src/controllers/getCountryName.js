@@ -10,7 +10,7 @@ const getCountryName = async (req,res) => {
         const searchCountry = await Country.findAll({where: {name:{[Op.iLike]:`%${name}%`}}})
 
         if(!searchCountry.length){
-            return res.status(404).json({error: 'No existe Mijo'})
+            return res.status(404).json({error: 'No existe'})
         }
         
 

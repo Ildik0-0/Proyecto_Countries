@@ -1,6 +1,6 @@
 
 const {Activity} = require('../db')
-//const axios = require('axios')
+
 
 const postActivity = async (req, res) => {
 
@@ -18,7 +18,7 @@ const postActivity = async (req, res) => {
           
 
             if(isCreate){
-                await postactivity.addCountries(countries)//aqui insert en la tabla realcional 
+                await postactivity.addCountries(countries)
                 res.status(201).send('Esta Creado')
             }else{
                 res.status(409).send('Ya existe')
