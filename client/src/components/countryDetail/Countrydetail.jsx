@@ -1,12 +1,12 @@
 
-//import style from '../countryDetail/details.module.css'
+
 import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux"
 import { getCountryId } from "../../redux/reducer"
 import { useParams } from "react-router-dom"
 import style from '../countryDetail/details.module.css'
-// import { Link } from "react-router-dom"
+
 import axios from "axios"
 
 export const Countrydetail = () =>{
@@ -36,7 +36,7 @@ if(!country) return(
 )
 
 
-// className={style.detailConteiner}
+
     return(
         <div className={style.imageBack}>
             <div className={style.detailConteiner}>

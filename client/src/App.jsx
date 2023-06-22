@@ -6,6 +6,7 @@ import {Formactivity} from './components/formCountry/Formactivity'
 import { Countrydetail } from './components/countryDetail/Countrydetail';
 import { Routes, Route } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import style from './App.module.css'
 
 
@@ -26,13 +27,26 @@ const location = useLocation()
         <Route path= '/' element={<LandingPage/>}/>
         <Route path= '/details/:id' element={<Countrydetail/>} />
         <Route path= '/activity' element={<Formactivity/>}/>
-        
+        <Route path='*' element={<NotFound />} />
         
       </Routes>
-      {/* <Home/>
-      <LandingPage/> */}
+      
     </div>
   )
+
+}
+function NotFound() {
+  return (
+      <div >
+          <h2>Error 404: No information found</h2>
+          <p > The link you try to enter is invalid .</p>
+          <Link to="/home">
+          <div  > 
+            <h1>Go back to HOME</h1>
+          </div>
+          </Link>
+      </div>
+  );
 }
 
 export default App

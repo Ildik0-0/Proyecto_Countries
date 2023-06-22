@@ -1,15 +1,15 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Search } from '../../components/seachBar/Search'
 import style from '../navBar/nav.module.css'
 
 
 export const Navbar = () => {
 
-    const location = useLocation()
+ 
 
     return(
         <nav>
-            {location.pathname !== '/activity' && <Search />}
+           
             <div className={style.nav}>
             
                 <div className={style.menu}>

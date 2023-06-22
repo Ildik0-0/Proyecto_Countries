@@ -9,7 +9,6 @@ import style from '../formCountry/from.module.css'
 
 export const Formactivity = () => {
   const URL = 'http://localhost:3001/countries';
-  //const URL2 = 'http://localhost:3001/activities';
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const countriesActivityForm = useSelector(state => state.country.countries);
@@ -153,7 +152,7 @@ export const Formactivity = () => {
                             {errors.countries && <p className={style.error}>{errors.countries}</p>}
 
                             <div className={style.spanTag}>
-                              {/* {userData?.countries.length ? <span>Countries Select:</span> : null} */}
+                              
                               {userData && userData.countries && <span>Countries Select:</span>}
                             </div>
 
@@ -181,4 +180,4 @@ export const Formactivity = () => {
     )
 }
 
-//export default Formactivity;
+

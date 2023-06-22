@@ -9,7 +9,7 @@ export const Search = () => {
   const URL = 'http://localhost:3001/countries';
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState('');
-  const [searchError, setSearchError] = useState(false); // Estado para controlar el error de búsqueda
+  const [searchError, setSearchError] = useState(false); 
 
   useEffect(() => {
     setSearchError(false);
@@ -17,9 +17,9 @@ export const Search = () => {
       try {
         const { data } = await axios.get(`${URL}/name/?name=${searchTerm}`);
         dispatch(getCountryName(data));
-        setSearchError(data.length === 0); // Establecer el estado de error a verdadero si no se encuentran resultados
+        setSearchError(data.length === 0); 
       } catch (error) {
-        setSearchError(true); // Establecer el estado de error a verdadero si hay un error en la llamada a la API
+        setSearchError(true); 
       }
     };
     getAll();

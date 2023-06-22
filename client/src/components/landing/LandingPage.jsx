@@ -1,4 +1,4 @@
-//import style from '../homeCountry/home.module.css'
+
 import {NavLink} from 'react-router-dom'
 import style from '../landing/landingPage.module.css'
 
@@ -13,7 +13,7 @@ import style from '../landing/landingPage.module.css'
                     <div>
                   
                 <button className={style.btnHome}>
-                    <NavLink to='/home'> HOME </NavLink>
+                    <NavLink to='/home'> View Countries </NavLink>
                 </button>
                 </div>
             </div>
@@ -21,4 +21,3 @@ import style from '../landing/landingPage.module.css'
     )
 }
 
-// export default Home;
